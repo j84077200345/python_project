@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if session['Account'] %}
+<center><h5>Hello {{session['Name']}} !!</h5></center>
+{% endif %}
+<center><h5>Welcome to the Yourtube</h5></center>
+{% endblock %}

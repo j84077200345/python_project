@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<main role="main" class="container">
+    <div class="jumbotron">
+        <h1>{{search}}</h1>
+        {% for video in user_video %}
+        <div class="card" style="width: 18rem;">
+            <a href="{{video_link}}"><img class="card-img-top" src="{{video.img}}" alt="Card image cap"></a>
+            <div class="card-body">
+                <a href="{{video.link}}"><h5 class="card-title">{{video.title}}</h5></a>
+                <form action="/download" target="_blank">
+                    <button type="submit" class="btn btn-danger btn-form" name="value" value="MP3&{{video.link}}"><i class="fas fa-download"></i>&nbsp;MP3</button>
+                    <button type="submit" class="btn btn-warning btn-form" name="value" value="MP4&{{video.link}}"><i class="fas fa-download"></i>&nbsp;MP4</button>
+                </form>
+                <form action="/delete" method="post">
+                    <input type="hidden" name="link" value="{{video.link}}">
+                    <button type="submit" class="btn btn-success btn-form"><i class="far fa-trash-alt"></i>&nbsp;Delete</button>
+                </form>
+            </div>
+        </div>
+        <br/>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}
